@@ -11,8 +11,8 @@ $mode = $_REQUEST["mode"];
 $page = basename($_SERVER["PHP_SELF"]);
 $inputId = $_POST["inputId"];
 $inputPw = $_POST["inputPw"];
-$accessId = "1";
-$accessPw = "2";
+$accessId = "6ce6cec0af1a41597e71abe9a16211ab";
+$accessPw = "6c9f5226ab5969aa7a4da15a41e849fe";
 $accessFlag = $_SESSION["accessFlag"];
 $loginFailed = false;
 
@@ -25,7 +25,7 @@ if ($accessFlag == "Y") {
     }
 } else {
     if ($mode == "login") {
-        if ($accessPw == $inputPw && $accessId == $inputId) {
+        if ($accessPw == md5($inputPw) && $accessId == md5($inputId)) {
             $_SESSION["accessFlag"] = "Y";
             echo "<script>location.href='{$page}'</script>";
             exit();
